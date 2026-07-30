@@ -1,5 +1,6 @@
 {
   "schema_version": 1,
+  "status": "published",
   "edition": "002",
   "date": "2026-07-24",
   "date_display": "Friday, July 24, 2026",
@@ -22,6 +23,8 @@
       "bottom_line": "The winners of the AI era will be the organizations that can afford the technology without losing the trust of the people expected to use it.",
       "provider_impact": "Responsible adoption requires workflow design, training, oversight, and infrastructure—not simply access to a model.",
       "patient_impact": "Patients benefit only when investment produces safer care, clearer decisions, and more time with clinicians."
+      ,"image": {"src": "", "caption": "", "credit": "", "alt": "Abstract infrastructure supporting artificial intelligence"},
+      "related": ["the-grid-behind-the-ai-boom", "wall-street-s-new-concern-ai-is-getting-expensive"]
     },
     {
       "slug": "congress-pushes-back-on-presidential-war-powers",

@@ -19,7 +19,7 @@ Serve the directory through any static web server. To reproduce the GitHub Pages
 
 ## Creating and publishing editions
 
-Open `/admin/` to edit an edition, save browser-local drafts, preview changes, export JSON, or generate a complete publish package. See [PUBLISHING.md](PUBLISHING.md) for the GitHub Desktop workflow.
+Open `/admin/` to import ChatGPT Markdown or plain text, normalize it into the Beacon schema, review exact public previews, manage editorial states, and publish directly to GitHub. See [PUBLISHING-PLATFORM.md](PUBLISHING-PLATFORM.md) for the complete workflow. The earlier ZIP/GitHub Desktop fallback remains documented in [PUBLISHING.md](PUBLISHING.md).
 
 ## Hosting
 

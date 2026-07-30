@@ -1,0 +1,18 @@
+(function(){
+  const DEFAULT={owner:'jburris04',repo:'The-Beacon',branch:'main'};
+  const config=()=>({...DEFAULT,...JSON.parse(localStorage.getItem('beacon-github-config')||'{}')});
+  const token=()=>sessionStorage.getItem('beacon-github-token')||'';
+  function configure(next,pat){localStorage.setItem('beacon-github-config',JSON.stringify({...config(),...next}));if(pat)sessionStorage.setItem('beacon-github-token',pat.trim())}
+  function disconnect(){sessionStorage.removeItem('beacon-github-token')}
+  async function api(path,options={}){const c=config(),t=token();if(!t)throw new Error('Connect GitHub before publishing.');const r=await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}${path}`,{...options,headers:{Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',Authorization:`Bearer ${t}`,'Content-Type':'application/json',...(options.headers||{})}});if(!r.ok){const body=await r.json().catch(()=>({}));throw new Error(body.message||`GitHub returned ${r.status}.`)}return r.status===204?{}:r.json()}
+  async function publish(files,message,onProgress=()=>{}){
+    const c=config();onProgress('Checking the main branch…');const ref=await api(`/git/ref/heads/${encodeURIComponent(c.branch)}`),parent=ref.object.sha;const commit=await api(`/git/commits/${parent}`);
+    onProgress(`Preparing ${Object.keys(files).length} publication files…`);const entries=await Promise.all(Object.entries(files).map(async([path,content])=>{const blob=await api('/git/blobs',{method:'POST',body:JSON.stringify({content,encoding:'utf-8'})});return {path,mode:'100644',type:'blob',sha:blob.sha}}));
+    onProgress('Building the publication release…');const tree=await api('/git/trees',{method:'POST',body:JSON.stringify({base_tree:commit.tree.sha,tree:entries})});const next=await api('/git/commits',{method:'POST',body:JSON.stringify({message,tree:tree.sha,parents:[parent]})});
+    onProgress('Publishing to GitHub…');await api(`/git/refs/heads/${encodeURIComponent(c.branch)}`,{method:'PATCH',body:JSON.stringify({sha:next.sha,force:false})});return {sha:next.sha,html_url:`https://github.com/${c.owner}/${c.repo}/commit/${next.sha}`};
+  }
+  async function waitForPages(edition,timeout=90000,onProgress=()=>{}){const c=config(),started=Date.now(),url=`https://${c.owner}.github.io/${c.repo}/content/editions/edition-${edition}.json`;while(Date.now()-started<timeout){onProgress('Waiting for GitHub Pages…');try{const r=await fetch(`${url}?deploy=${Date.now()}`,{cache:'no-store'});if(r.ok){const d=await r.json();if(d.edition===edition&&d.status==='published')return url}}catch{}await new Promise(r=>setTimeout(r,5000))}throw new Error('GitHub accepted the release, but Pages is still deploying. Check the live site in another minute.')}
+  async function history(){const c=config();return api(`/commits?sha=${encodeURIComponent(c.branch)}&path=content/editions&per_page=30`)}
+  async function rollback(sha,onProgress=()=>{}){const c=config();onProgress('Reading the selected version…');const target=await api(`/git/commits/${sha}`),ref=await api(`/git/ref/heads/${encodeURIComponent(c.branch)}`);onProgress('Creating rollback release…');const commit=await api('/git/commits',{method:'POST',body:JSON.stringify({message:`Rollback Beacon publication to ${sha.slice(0,7)}`,tree:target.tree.sha,parents:[ref.object.sha]})});await api(`/git/refs/heads/${encodeURIComponent(c.branch)}`,{method:'PATCH',body:JSON.stringify({sha:commit.sha,force:false})});return commit}
+  window.BeaconGitHub={config,configure,disconnect,connected:()=>!!token(),publish,waitForPages,history,rollback};
+})();

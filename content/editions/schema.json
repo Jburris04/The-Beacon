@@ -4,10 +4,10 @@
   "type": "object",
   "required": ["edition", "date", "date_display", "theme", "summary", "editor_note", "stories", "radar"],
   "properties": {
-    "schema_version": {"type": "integer"}, "edition": {"type": "string"}, "date": {"type": "string"},
+    "schema_version": {"type": "integer"}, "status": {"enum":["draft","review","scheduled","published","archived"]}, "edition": {"type": "string"}, "date": {"type": "string"},
     "date_display": {"type": "string"}, "theme": {"type": "string"}, "summary": {"type": "string"},
     "editor_note": {"type": "string"}, "reading_time": {"type": "string"},
-    "stories": {"type": "array", "items": {"type": "object", "required": ["slug", "section", "headline", "standfirst", "paragraphs", "bottom_line"], "properties": {"slug":{"type":"string"},"section":{"type":"string"},"headline":{"type":"string"},"standfirst":{"type":"string"},"paragraphs":{"type":"array","items":{"type":"string"}},"pull_quote":{"type":"string"},"bottom_line":{"type":"string"},"provider_impact":{"type":"string"},"patient_impact":{"type":"string"}}}},
+    "stories": {"type": "array", "items": {"type": "object", "required": ["slug", "section", "headline", "standfirst", "paragraphs", "bottom_line"], "properties": {"slug":{"type":"string"},"section":{"type":"string"},"headline":{"type":"string"},"standfirst":{"type":"string"},"paragraphs":{"type":"array","items":{"type":"string"}},"pull_quote":{"type":"string"},"bottom_line":{"type":"string"},"provider_impact":{"type":"string"},"patient_impact":{"type":"string"},"image":{"type":"object","properties":{"src":{"type":"string"},"caption":{"type":"string"},"credit":{"type":"string"},"alt":{"type":"string"}}},"related":{"type":"array","items":{"type":"string"}}}}},
     "radar": {"type": "array", "items": {"type":"object","required":["title"],"properties":{"title":{"type":"string"},"detail":{"type":"string"}}}}
   }
 }

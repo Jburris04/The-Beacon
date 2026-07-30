@@ -22,7 +22,8 @@
   $('.subscribe-form')?.addEventListener('submit', e => { e.preventDefault(); $('.form-message').textContent = 'You’re on the list. The Beacon will meet you in your inbox.'; e.currentTarget.reset(); });
 
   function storyCard(s, edition, featured = false) {
-    return `<article class="story-card${featured?' story-card--lead':''}"><p class="eyebrow">${esc(s.section)}</p><h3><a href="${link(`article/${s.slug}/index.html`)}">${esc(s.headline)}</a></h3><p>${esc(s.standfirst)}</p><a class="text-link" href="${link(`article/${s.slug}/index.html`)}">Read story <span aria-hidden="true">→</span></a></article>`;
+    const media=s.image?.src?`<img src="${esc(s.image.src)}" alt="${esc(s.image.alt||s.headline)}" loading="lazy">`:`<div class="image-placeholder" role="img" aria-label="Image forthcoming"><span>B.</span></div>`;
+    return `<article class="story-card${featured?' story-card--lead':''}"><a class="story-media" href="${link(`article/${s.slug}/index.html`)}">${media}</a><p class="eyebrow">${esc(s.section)}</p><h3><a href="${link(`article/${s.slug}/index.html`)}">${esc(s.headline)}</a></h3><p>${esc(s.standfirst)}</p><a class="text-link" href="${link(`article/${s.slug}/index.html`)}">Read story <span aria-hidden="true">→</span></a></article>`;
   }
   function impact(s) {
     if (!s.provider_impact && !s.patient_impact) return '';
@@ -61,7 +62,9 @@
     $('#article-byline').textContent=`The Beacon Editorial Desk · ${d.date_display||formatDate(d.date)}`;
     $('#article-back').href=link(`edition/${d.edition}/index.html`); $('#article-back').textContent=`← Edition ${d.edition}`;
     $('#article-theme').textContent=d.theme; $('#article-theme-link').href=link(`edition/${d.edition}/index.html`);
-    $('#article-body').innerHTML=s.paragraphs.map((p,i)=>`${i===1&&s.pull_quote?`<blockquote>${esc(s.pull_quote)}</blockquote>`:''}<p>${esc(p)}</p>`).join('') + (s.paragraphs.length<2&&s.pull_quote?`<blockquote>${esc(s.pull_quote)}</blockquote>`:'') + impact(s) + bottomLine(s.bottom_line);
+    const media=s.image?.src?`<figure class="article-media"><img src="${esc(s.image.src)}" alt="${esc(s.image.alt||s.headline)}"><figcaption>${esc(s.image.caption||'')}${s.image.credit?` <span>${esc(s.image.credit)}</span>`:''}</figcaption></figure>`:`<div class="article-media image-placeholder" role="img" aria-label="Image forthcoming"><span>B.</span></div>`;
+    const related=(s.related||[]).map(slug=>d.stories.find(x=>x.slug===slug)).filter(Boolean);
+    $('#article-body').innerHTML=media+s.paragraphs.map((p,i)=>`${i===1&&s.pull_quote?`<blockquote>${esc(s.pull_quote)}</blockquote>`:''}<p>${esc(p)}</p>`).join('') + (s.paragraphs.length<2&&s.pull_quote?`<blockquote>${esc(s.pull_quote)}</blockquote>`:'') + impact(s) + bottomLine(s.bottom_line)+(related.length?`<section class="related"><p class="eyebrow">Related reporting</p>${related.map(x=>`<a href="${link(`article/${x.slug}/index.html`)}">${esc(x.headline)} <span>→</span></a>`).join('')}</section>`:'');
   }
   async function renderArchive(){
     const items=await json(`${base}content/editions/index.json`);
