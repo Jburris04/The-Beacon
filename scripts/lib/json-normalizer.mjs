@@ -1,0 +1,18 @@
+const slugify=s=>String(s||'story').toLowerCase().normalize('NFKD').replace(/[’']/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80)||'story';
+const text=v=>typeof v==='string'?v.trim():'';
+const paragraphs=v=>Array.isArray(v)?v.map(text).filter(Boolean):text(v)?text(v).split(/\n\s*\n/).map(text).filter(Boolean):[];
+const firstSentence=v=>{const p=paragraphs(v)[0]||'';return(p.match(/^.+?[.!?](?:\s|$)/)?.[0]||p).trim().slice(0,260)};
+const readingTime=v=>{const m=String(v||'').match(/\d+/);return m?`${m[0]} minutes`:''};
+const radarItem=v=>{if(typeof v==='string'){const [title,...rest]=v.split(/:\s+/);return {title:text(title),detail:text(rest.join(': '))||'The newsroom is monitoring this developing story.'}}return {title:text(v?.title||v?.headline),detail:text(v?.detail||v?.reason)||'The newsroom is monitoring this developing story.'}};
+
+export function normalizeChatGPTEdition(source){
+  if(!source||typeof source!=='object'||Array.isArray(source))return source;
+  if(source.schema_version===2)return source;
+  const nested=Array.isArray(source.sections)&&source.sections.some(s=>Array.isArray(s?.stories));
+  const sectionInputs=nested?source.sections:[];
+  const storyInputs=nested?sectionInputs.flatMap(section=>(section.stories||[]).map(story=>({story,section:text(section.name)||'News'}))):(source.stories||[]).map(story=>({story,section:text(story.section)||'News'}));
+  const used=new Set(),stories=storyInputs.map(({story,section})=>{let slug=text(story.slug)||slugify(story.headline||story.title),n=2;while(used.has(slug))slug=`${slugify(story.headline||story.title)}-${n++}`;used.add(slug);const body=paragraphs(story.body||story.paragraphs);return {slug,section,category:text(story.category)||section,headline:text(story.headline||story.title),standfirst:text(story.standfirst)||firstSentence(body),body,sources:Array.isArray(story.sources)?story.sources.map(s=>typeof s==='string'?{title:s,url:''}:{title:text(s.title),url:text(s.url)}):[],pull_quote:text(story.pull_quote||story.pullQuote),bottom_line:text(story.bottom_line||story.bottomLine),why_it_matters:{general:text(story.why_it_matters?.general||story.whyItMatters),providers:text(story.why_it_matters?.providers||story.provider_impact||story.providerImpact),patients:text(story.why_it_matters?.patients||story.patient_impact||story.patientImpact)},chain_reaction:Array.isArray(story.chainReaction)?story.chainReaction.map(text).filter(Boolean).join('\n↓\n'):text(story.chain_reaction||story.chainReaction),image:{src:text(story.image?.src||story.heroImage),caption:text(story.image?.caption||story.caption),credit:text(story.image?.credit||story.credit),alt:text(story.image?.alt||story.altText)||`Editorial image for ${text(story.headline||story.title)}`}}});
+  const groups=new Map();stories.forEach(story=>{if(!groups.has(story.section))groups.set(story.section,[]);groups.get(story.section).push(story.slug)});
+  const edition=String(source.edition||source.editionNumber||source.number||'').replace(/\D/g,'').padStart(3,'0');
+  return {schema_version:2,edition,publication_date:text(source.publication_date||source.publicationDate||source.date),display_date:text(source.display_date||source.displayDate||source.date),theme:typeof source.theme==='object'?text(source.theme.title):text(source.theme),summary:text(source.summary||source.theme?.description),reading_time:readingTime(source.reading_time||source.readingTime),editor_note:text(source.editor_note||source.editorNote||source.editorialNote),sections:[...groups].map(([name,story_slugs])=>({name,story_slugs})),stories,radar:(source.radar||source.alreadyOnOurRadar||[]).map(radarItem),closing_thought:text(source.closing_thought||source.closingThought)};
+}
