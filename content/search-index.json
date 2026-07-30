@@ -1,4 +1,62 @@
 [
-  {"edition":"002","date":"2026-07-24","slug":"ai-arms-race","section":"Feature","headline":"The new AI arms race is about who can afford it.","standfirst":"The next phase of artificial intelligence will be decided not only by smarter models, but by who can pay for the chips, power, and infrastructure required to run them.","url":"article/ai-arms-race/index.html"},
-  {"edition":"002","date":"2026-07-24","slug":"congress-pushes-back-on-presidential-war-powers","section":"Politics","headline":"Congress pushes back on presidential war powers.","standfirst":"The argument is about who gets to decide when the country uses force.","url":"article/congress-pushes-back-on-presidential-war-powers/index.html"}
+  {
+    "edition": "002",
+    "publication_date": "2026-07-24",
+    "slug": "ai-arms-race",
+    "section": "Feature",
+    "category": "Feature",
+    "headline": "The new AI arms race is about who can afford it.",
+    "standfirst": "The next phase of artificial intelligence will be decided not only by smarter models, but by who can pay for the chips, power, and infrastructure required to run them.",
+    "url": "article/ai-arms-race/index.html"
+  },
+  {
+    "edition": "002",
+    "publication_date": "2026-07-24",
+    "slug": "congress-pushes-back-on-presidential-war-powers",
+    "section": "Politics",
+    "category": "Politics",
+    "headline": "Congress pushes back on presidential war powers.",
+    "standfirst": "The argument is not only about one conflict. It is about who gets to decide when the country uses force—and how much power Congress is willing to reclaim.",
+    "url": "article/congress-pushes-back-on-presidential-war-powers/index.html"
+  },
+  {
+    "edition": "002",
+    "publication_date": "2026-07-24",
+    "slug": "wall-street-s-new-concern-ai-is-getting-expensive",
+    "section": "Business & Markets",
+    "category": "Business & Markets",
+    "headline": "Wall Street’s new concern: AI is getting expensive.",
+    "standfirst": "Investors still believe in the technology. They are beginning to ask whether every company can afford the race, and how long it will take for massive spending to become real profit.",
+    "url": "article/wall-street-s-new-concern-ai-is-getting-expensive/index.html"
+  },
+  {
+    "edition": "002",
+    "publication_date": "2026-07-24",
+    "slug": "the-grid-behind-the-ai-boom",
+    "section": "Science & Infrastructure",
+    "category": "Science & Infrastructure",
+    "headline": "The grid behind the AI boom.",
+    "standfirst": "Data centers need enormous amounts of electricity. That turns energy policy into a technology story—and makes old infrastructure newly important.",
+    "url": "article/the-grid-behind-the-ai-boom/index.html"
+  },
+  {
+    "edition": "002",
+    "publication_date": "2026-07-24",
+    "slug": "ai-is-quietly-changing-the-doctor-s-office",
+    "section": "Healthcare & MedTech",
+    "category": "Healthcare & MedTech",
+    "headline": "AI is quietly changing the doctor’s office.",
+    "standfirst": "Not by replacing physicians, but by changing how they document visits, review information, and identify patterns in patient care.",
+    "url": "article/ai-is-quietly-changing-the-doctor-s-office/index.html"
+  },
+  {
+    "edition": "002",
+    "publication_date": "2026-07-24",
+    "slug": "what-happens-when-every-decision-has-to-be-made-faster",
+    "section": "Ideas",
+    "category": "Ideas",
+    "headline": "What happens when every decision has to be made faster?",
+    "standfirst": "Technology speeds up choices. Wisdom does not. That gap may define the next decade.",
+    "url": "article/what-happens-when-every-decision-has-to-be-made-faster/index.html"
+  }
 ]

@@ -1,3 +1,10 @@
 [
-  {"edition":"002","date":"2026-07-24","date_display":"Friday, July 24, 2026","theme":"The Cost of Moving Faster","summary":"Five stories, one thread: the systems we rely on are being asked to adapt quickly, while trust, infrastructure, and good judgment still take time.","reading_time":"19 minutes"}
+  {
+    "edition": "002",
+    "publication_date": "2026-07-24",
+    "display_date": "Friday, July 24, 2026",
+    "theme": "The Cost of Moving Faster",
+    "summary": "Five stories, one thread: the systems we rely on are being asked to adapt quickly, while trust, infrastructure, and good judgment still take time.",
+    "reading_time": "19 minutes"
+  }
 ]

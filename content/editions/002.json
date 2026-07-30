@@ -1,0 +1,209 @@
+{
+  "schema_version": 2,
+  "edition": "002",
+  "publication_date": "2026-07-24",
+  "display_date": "Friday, July 24, 2026",
+  "theme": "The Cost of Moving Faster",
+  "summary": "Five stories, one thread: the systems we rely on are being asked to adapt quickly, while trust, infrastructure, and good judgment still take time.",
+  "reading_time": "19 minutes",
+  "editor_note": "Every institution seems to be making faster decisions than ever before. Hospitals, governments, markets, and technology companies are all adapting to accelerating change. Today’s edition is not about speed. It is about understanding what happens when the world starts moving faster than the people responsible for guiding it.",
+  "sections": [
+    {
+      "name": "Feature",
+      "story_slugs": [
+        "ai-arms-race"
+      ]
+    },
+    {
+      "name": "Politics",
+      "story_slugs": [
+        "congress-pushes-back-on-presidential-war-powers"
+      ]
+    },
+    {
+      "name": "Business & Markets",
+      "story_slugs": [
+        "wall-street-s-new-concern-ai-is-getting-expensive"
+      ]
+    },
+    {
+      "name": "Science & Infrastructure",
+      "story_slugs": [
+        "the-grid-behind-the-ai-boom"
+      ]
+    },
+    {
+      "name": "Healthcare & MedTech",
+      "story_slugs": [
+        "ai-is-quietly-changing-the-doctor-s-office"
+      ]
+    },
+    {
+      "name": "Ideas",
+      "story_slugs": [
+        "what-happens-when-every-decision-has-to-be-made-faster"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "slug": "ai-arms-race",
+      "section": "Feature",
+      "category": "Feature",
+      "headline": "The new AI arms race is about who can afford it.",
+      "standfirst": "The next phase of artificial intelligence will be decided not only by smarter models, but by who can pay for the chips, power, and infrastructure required to run them.",
+      "body": [
+        "Picture a hospital executive looking at two proposals. One promises better care and less paperwork. The other shows the cost of the data-center capacity, cybersecurity, training, and oversight needed to make it work.",
+        "That is where the AI conversation is heading. The question is no longer whether these tools are impressive. It is whether institutions can afford to use them responsibly.",
+        "For companies, the financial stakes are enormous. For hospitals, the stakes are even more personal. A system that saves clinicians time can improve care. A system that creates confusion can do the opposite."
+      ],
+      "sources": [],
+      "pull_quote": "Technology moves quickly. Trust does not.",
+      "bottom_line": "The winners of the AI era will be the organizations that can afford the technology without losing the trust of the people expected to use it.",
+      "why_it_matters": {
+        "providers": "Responsible adoption requires workflow design, training, oversight, and infrastructure—not simply access to a model.",
+        "patients": "Patients benefit only when investment produces safer care, clearer decisions, and more time with clinicians."
+      },
+      "image": {
+        "src": "",
+        "caption": "",
+        "credit": "",
+        "alt": "Abstract infrastructure supporting artificial intelligence"
+      }
+    },
+    {
+      "slug": "congress-pushes-back-on-presidential-war-powers",
+      "section": "Politics",
+      "category": "Politics",
+      "headline": "Congress pushes back on presidential war powers.",
+      "standfirst": "The argument is not only about one conflict. It is about who gets to decide when the country uses force—and how much power Congress is willing to reclaim.",
+      "body": [
+        "The constitutional debate is old, but the decisions before lawmakers are immediate. Congress is again asking where executive flexibility ends and its own responsibility begins."
+      ],
+      "sources": [],
+      "pull_quote": "Authority on paper matters most when it is tested in practice.",
+      "bottom_line": "Constitutional debates become practical very quickly when lives, alliances, and military commitments are at stake.",
+      "why_it_matters": {
+        "providers": "",
+        "patients": ""
+      },
+      "image": {
+        "src": "",
+        "caption": "",
+        "credit": "",
+        "alt": "Editorial image for Congress pushes back on presidential war powers."
+      }
+    },
+    {
+      "slug": "wall-street-s-new-concern-ai-is-getting-expensive",
+      "section": "Business & Markets",
+      "category": "Business & Markets",
+      "headline": "Wall Street’s new concern: AI is getting expensive.",
+      "standfirst": "Investors still believe in the technology. They are beginning to ask whether every company can afford the race, and how long it will take for massive spending to become real profit.",
+      "body": [
+        "Capital markets have rewarded ambition. The next test is whether the infrastructure bill produces durable returns rather than a permanent race to spend."
+      ],
+      "sources": [],
+      "pull_quote": "The price of possibility is becoming easier to measure.",
+      "bottom_line": "Excitement is easy. Earning back the investment is harder.",
+      "why_it_matters": {
+        "providers": "",
+        "patients": ""
+      },
+      "image": {
+        "src": "",
+        "caption": "",
+        "credit": "",
+        "alt": "Editorial image for Wall Street’s new concern: AI is getting expensive."
+      }
+    },
+    {
+      "slug": "the-grid-behind-the-ai-boom",
+      "section": "Science & Infrastructure",
+      "category": "Science & Infrastructure",
+      "headline": "The grid behind the AI boom.",
+      "standfirst": "Data centers need enormous amounts of electricity. That turns energy policy into a technology story—and makes old infrastructure newly important.",
+      "body": [
+        "The most advanced software still depends on physical systems: transmission lines, substations, generation capacity, cooling, and the public decisions that determine where each can be built."
+      ],
+      "sources": [],
+      "pull_quote": "Every digital revolution has a physical foundation.",
+      "bottom_line": "The future of AI may depend as much on wires, power plants, and permitting as on software.",
+      "why_it_matters": {
+        "providers": "",
+        "patients": ""
+      },
+      "image": {
+        "src": "",
+        "caption": "",
+        "credit": "",
+        "alt": "Editorial image for The grid behind the AI boom."
+      }
+    },
+    {
+      "slug": "ai-is-quietly-changing-the-doctor-s-office",
+      "section": "Healthcare & MedTech",
+      "category": "Healthcare & MedTech",
+      "headline": "AI is quietly changing the doctor’s office.",
+      "standfirst": "Not by replacing physicians, but by changing how they document visits, review information, and identify patterns in patient care.",
+      "body": [
+        "The most useful systems are often the least theatrical. They listen, organize, surface relevant details, and give clinical teams a little more attention to return to the person in the room."
+      ],
+      "sources": [],
+      "pull_quote": "The best clinical technology may be the technology patients barely notice.",
+      "bottom_line": "AI will matter in healthcare only if it improves the relationship between patients and clinicians rather than getting in the way of it.",
+      "why_it_matters": {
+        "providers": "Good technology should return time to clinicians, support judgment, and fit into the reality of a busy hospital or practice.",
+        "patients": "The real test is whether innovation leads to safer care, earlier answers, better access, or a better quality of life."
+      },
+      "image": {
+        "src": "",
+        "caption": "",
+        "credit": "",
+        "alt": "Editorial image for AI is quietly changing the doctor’s office."
+      }
+    },
+    {
+      "slug": "what-happens-when-every-decision-has-to-be-made-faster",
+      "section": "Ideas",
+      "category": "Ideas",
+      "headline": "What happens when every decision has to be made faster?",
+      "standfirst": "Technology speeds up choices. Wisdom does not. That gap may define the next decade.",
+      "body": [
+        "Faster information can sharpen a decision, but it can also compress the time available for doubt, consultation, and course correction. The durable advantage may belong to institutions that preserve room to think."
+      ],
+      "sources": [],
+      "pull_quote": "Urgency is a condition. It is not a strategy.",
+      "bottom_line": "Moving faster is not the same as moving well.",
+      "why_it_matters": {
+        "providers": "",
+        "patients": ""
+      },
+      "image": {
+        "src": "",
+        "caption": "",
+        "credit": "",
+        "alt": "Editorial image for What happens when every decision has to be made faster?"
+      }
+    }
+  ],
+  "radar": [
+    {
+      "title": "The American consumer’s next test",
+      "detail": "What earnings reveal about household resilience and changing spending."
+    },
+    {
+      "title": "A weekend geopolitical turn",
+      "detail": "The international development most likely to shape Monday’s agenda."
+    },
+    {
+      "title": "The story we almost missed",
+      "detail": "An overlooked report with consequences larger than its first headline."
+    },
+    {
+      "title": "Healthcare’s regulatory calendar",
+      "detail": "FDA decisions and policy changes affecting providers and patients."
+    }
+  ],
+  "closing_thought": "Moving faster is not the same as moving well."
+}

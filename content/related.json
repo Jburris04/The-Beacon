@@ -1,3 +1,32 @@
 {
-  "ai-arms-race": ["the-grid-behind-the-ai-boom", "wall-street-s-new-concern-ai-is-getting-expensive"]
+  "ai-arms-race": [
+    "congress-pushes-back-on-presidential-war-powers",
+    "wall-street-s-new-concern-ai-is-getting-expensive",
+    "the-grid-behind-the-ai-boom"
+  ],
+  "congress-pushes-back-on-presidential-war-powers": [
+    "ai-arms-race",
+    "wall-street-s-new-concern-ai-is-getting-expensive",
+    "the-grid-behind-the-ai-boom"
+  ],
+  "wall-street-s-new-concern-ai-is-getting-expensive": [
+    "ai-arms-race",
+    "congress-pushes-back-on-presidential-war-powers",
+    "the-grid-behind-the-ai-boom"
+  ],
+  "the-grid-behind-the-ai-boom": [
+    "ai-arms-race",
+    "congress-pushes-back-on-presidential-war-powers",
+    "wall-street-s-new-concern-ai-is-getting-expensive"
+  ],
+  "ai-is-quietly-changing-the-doctor-s-office": [
+    "ai-arms-race",
+    "congress-pushes-back-on-presidential-war-powers",
+    "wall-street-s-new-concern-ai-is-getting-expensive"
+  ],
+  "what-happens-when-every-decision-has-to-be-made-faster": [
+    "ai-arms-race",
+    "congress-pushes-back-on-presidential-war-powers",
+    "wall-street-s-new-concern-ai-is-getting-expensive"
+  ]
 }

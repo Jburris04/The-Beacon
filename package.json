@@ -1,0 +1,14 @@
+{
+  "name": "the-beacon-publisher",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate-edition": "node scripts/validate-edition.mjs",
+    "generate": "node scripts/generate-site.mjs",
+    "publish-edition": "node scripts/publish-edition.mjs",
+    "rollback": "node scripts/rollback.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {"node": ">=20"}
+}

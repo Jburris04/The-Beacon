@@ -1,0 +1,93 @@
+name: Publish Beacon edition
+
+on:
+  workflow_dispatch:
+    inputs:
+      edition_json_base64:
+        description: Base64-encoded canonical Beacon edition JSON
+        required: true
+        type: string
+      allow_update:
+        description: Replace an existing edition number intentionally
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pages: read
+
+concurrency:
+  group: beacon-publisher
+  cancel-in-progress: false
+
+jobs:
+  validate-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EDITION_JSON_BASE64: ${{ inputs.edition_json_base64 }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Decode edition payload
+        run: |
+          node -e "require('fs').writeFileSync(process.env.RUNNER_TEMP + '/edition.json', Buffer.from(process.env.EDITION_JSON_BASE64, 'base64'))"
+          test -s "$RUNNER_TEMP/edition.json" || { echo 'Edition payload decoded to an empty file.' >&2; exit 1; }
+
+      - name: Validate publisher and edition
+        run: |
+          npm test
+          npm run validate-edition -- "$RUNNER_TEMP/edition.json"
+
+      - name: Configure publication commit
+        run: |
+          git config user.name "Beacon Publisher"
+          git config user.email "actions@users.noreply.github.com"
+
+      - name: Generate and commit edition
+        env:
+          ALLOW_UPDATE: ${{ inputs.allow_update }}
+        run: |
+          args=(--yes --no-push)
+          if [ "$ALLOW_UPDATE" = "true" ]; then args+=(--update); fi
+          npm run publish-edition -- "$RUNNER_TEMP/edition.json" "${args[@]}"
+
+      - name: Push publication commit
+        run: git push origin HEAD:main
+
+      - name: Wait for GitHub Pages
+        run: |
+          edition=$(node -p "JSON.parse(require('fs').readFileSync(process.env.RUNNER_TEMP + '/edition.json')).edition")
+          url="https://jburris04.github.io/The-Beacon/content/editions/${edition}.json"
+          for attempt in {1..18}; do
+            if curl --fail --silent --show-error "${url}?commit=$(git rev-parse HEAD)" | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>process.exit(JSON.parse(s).edition===process.argv[1]?0:1))" "$edition"; then
+              echo "GitHub Pages is serving Edition ${edition}."
+              exit 0
+            fi
+            echo "Waiting for GitHub Pages (${attempt}/18)…"
+            sleep 5
+          done
+          echo "The commit was pushed, but GitHub Pages did not update within 90 seconds." >&2
+          exit 1
+
+      - name: Publication summary
+        if: always()
+        run: |
+          edition=$(node -p "JSON.parse(require('fs').readFileSync(process.env.RUNNER_TEMP + '/edition.json')).edition")
+          {
+            echo "## Beacon Edition ${edition}"
+            echo "- Commit: \`$(git rev-parse HEAD)\`"
+            echo "- [Homepage](https://jburris04.github.io/The-Beacon/)"
+            echo "- [Edition](https://jburris04.github.io/The-Beacon/edition/${edition}/)"
+            echo "- [Archive](https://jburris04.github.io/The-Beacon/archive/)"
+          } >> "$GITHUB_STEP_SUMMARY"

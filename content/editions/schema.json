@@ -1,13 +1,39 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jburris04.github.io/The-Beacon/content/editions/schema.json",
   "title": "Beacon Edition",
+  "description": "Canonical source-of-truth schema for one Beacon edition.",
   "type": "object",
-  "required": ["edition", "date", "date_display", "theme", "summary", "editor_note", "stories", "radar"],
+  "additionalProperties": false,
+  "required": ["schema_version","edition","publication_date","display_date","theme","summary","reading_time","editor_note","sections","stories","radar","closing_thought"],
   "properties": {
-    "schema_version": {"type": "integer"}, "status": {"enum":["draft","review","scheduled","published","archived"]}, "edition": {"type": "string"}, "date": {"type": "string"},
-    "date_display": {"type": "string"}, "theme": {"type": "string"}, "summary": {"type": "string"},
-    "editor_note": {"type": "string"}, "reading_time": {"type": "string"},
-    "stories": {"type": "array", "items": {"type": "object", "required": ["slug", "section", "headline", "standfirst", "paragraphs", "bottom_line"], "properties": {"slug":{"type":"string"},"section":{"type":"string"},"headline":{"type":"string"},"standfirst":{"type":"string"},"paragraphs":{"type":"array","items":{"type":"string"}},"pull_quote":{"type":"string"},"bottom_line":{"type":"string"},"provider_impact":{"type":"string"},"patient_impact":{"type":"string"},"image":{"type":"object","properties":{"src":{"type":"string"},"caption":{"type":"string"},"credit":{"type":"string"},"alt":{"type":"string"}}},"related":{"type":"array","items":{"type":"string"}}}}},
-    "radar": {"type": "array", "items": {"type":"object","required":["title"],"properties":{"title":{"type":"string"},"detail":{"type":"string"}}}}
+    "schema_version": {"const": 2},
+    "edition": {"type":"string","pattern":"^[0-9]{3}$"},
+    "publication_date": {"type":"string","format":"date"},
+    "display_date": {"type":"string","minLength":1},
+    "theme": {"type":"string","minLength":1},
+    "summary": {"type":"string","minLength":1},
+    "reading_time": {"type":"string","pattern":"^[1-9][0-9]* minutes?$"},
+    "editor_note": {"type":"string","minLength":1},
+    "sections": {
+      "type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["name","story_slugs"],"properties":{"name":{"type":"string","minLength":1},"story_slugs":{"type":"array","minItems":1,"items":{"type":"string","pattern":"^[a-z0-9]+(?:-[a-z0-9]+)*$"},"uniqueItems":true}}}
+    },
+    "stories": {
+      "type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["slug","section","category","headline","standfirst","body","sources","pull_quote","bottom_line","why_it_matters","image"],"properties":{
+        "slug":{"type":"string","pattern":"^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "section":{"type":"string","minLength":1},
+        "category":{"type":"string","minLength":1},
+        "headline":{"type":"string","minLength":1},
+        "standfirst":{"type":"string","minLength":1},
+        "body":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+        "sources":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["title","url"],"properties":{"title":{"type":"string","minLength":1},"url":{"type":"string","format":"uri","pattern":"^https://"}}}},
+        "pull_quote":{"type":"string"},
+        "bottom_line":{"type":"string","minLength":1},
+        "why_it_matters":{"type":"object","additionalProperties":false,"required":["providers","patients"],"properties":{"providers":{"type":"string"},"patients":{"type":"string"}}},
+        "image":{"type":"object","additionalProperties":false,"required":["src","caption","credit","alt"],"properties":{"src":{"type":"string"},"caption":{"type":"string"},"credit":{"type":"string"},"alt":{"type":"string","minLength":1}}}
+      }}
+    },
+    "radar":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["title","detail"],"properties":{"title":{"type":"string","minLength":1},"detail":{"type":"string","minLength":1}}}},
+    "closing_thought":{"type":"string","minLength":1}
   }
 }

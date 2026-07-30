@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "edition": "003",
+  "publication_date": "2026-07-30",
+  "display_date": "Thursday, July 30, 2026",
+  "theme": "The Systems Behind the Breakthrough",
+  "summary": "Three stories about the institutions, infrastructure, and human judgment that turn promising ideas into durable progress.",
+  "reading_time": "14 minutes",
+  "editor_note": "Good morning. Today’s edition looks past the breakthrough itself and toward the systems that determine whether an idea can earn trust, scale responsibly, and improve daily life.",
+  "sections": [
+    {"name":"Technology","story_slugs":["the-infrastructure-test"]},
+    {"name":"Healthcare","story_slugs":["care-beyond-the-clinic"]}
+  ],
+  "stories": [
+    {
+      "slug": "the-infrastructure-test",
+      "section": "Technology",
+      "category": "Feature",
+      "headline": "The next technology race will be won behind the scenes.",
+      "standfirst": "Power, chips, networks, and skilled operators are becoming as important as the software they support.",
+      "body": ["The most visible products depend on systems most people never see.","That makes infrastructure a strategic choice rather than a background expense."],
+      "sources": [{"title":"Example primary source","url":"https://example.com/source"}],
+      "pull_quote": "Every digital breakthrough has a physical foundation.",
+      "bottom_line": "The organizations that invest in resilient foundations will set the pace for everyone else.",
+      "why_it_matters": {"providers":"Reliable infrastructure determines whether new tools fit safely into clinical work.","patients":"Dependable systems mean fewer disruptions and more consistent access to care."},
+      "image": {"src":"","caption":"Infrastructure makes innovation possible.","credit":"The Beacon","alt":"A network of infrastructure supporting digital services"}
+    },
+    {
+      "slug": "care-beyond-the-clinic",
+      "section": "Healthcare",
+      "category": "Healthcare & MedTech",
+      "headline": "Care is moving beyond the clinic walls.",
+      "standfirst": "Remote monitoring is changing where clinicians see risk and where patients receive support.",
+      "body": ["Healthcare increasingly follows patients into daily life.","The opportunity is earlier support; the obligation is clearer consent and accountability."],
+      "sources": [{"title":"Example health source","url":"https://example.org/health"}],
+      "pull_quote": "Convenience matters only when continuity comes with it.",
+      "bottom_line": "Remote care succeeds when technology strengthens the relationship rather than fragmenting it.",
+      "why_it_matters": {"providers":"Teams need clear escalation rules and workflows that prevent alert fatigue.","patients":"Patients need understandable choices, privacy, and confidence that someone is paying attention."},
+      "image": {"src":"","caption":"Care increasingly reaches patients where they live.","credit":"The Beacon","alt":"A patient speaking with a clinician through a remote care visit"}
+    }
+  ],
+  "radar": [{"title":"The next infrastructure earnings cycle","detail":"What capital spending reveals about which organizations can sustain the race."}],
+  "closing_thought": "Breakthroughs get the headlines. Systems decide what lasts."
+}

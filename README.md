@@ -1,26 +1,20 @@
-# The Beacon / Beacon Studio v1
+# The Beacon
 
-A premium, serverless digital newspaper built for GitHub Pages with plain HTML, CSS, and JavaScript.
+A static premium newspaper and secure publishing workflow for GitHub Pages.
 
-## Live routes
+Each edition has one canonical source file at `content/editions/NNN.json`. The public homepage, edition and article views load structured content; the publisher derives archive data, search, related stories, RSS, sitemap, and route shells.
 
-- `/` — current edition homepage
-- `/edition/002/` — complete example edition
-- `/article/<slug>/` — individual stories
-- `/archive/` — edition archive
-- `/about/` and `/subscribe/` — publication pages
-- `/admin/` — Beacon Studio
+## Commands
 
-The public site reads structured content from `content/editions/`. `index.json` is the newest-first edition index, and each `edition-NNN.json` follows `schema.json`.
+```sh
+npm test
+npm run validate -- examples/edition-003.example.json
+npm run generate -- examples/edition-003.example.json
+npm run publish-edition -- path/to/edition.json --dry-run
+npm run publish-edition -- path/to/edition.json
+npm run rollback -- COMMIT_SHA --dry-run
+```
 
-## Local preview
+Serve the repository through a static HTTP server and open it under `/The-Beacon/` to reproduce GitHub Pages subdirectory paths. Beacon Studio is at `/admin/`.
 
-Serve the directory through any static web server. To reproduce the GitHub Pages subdirectory locally, serve the parent folder and open `/The-Beacon/`.
-
-## Creating and publishing editions
-
-Open `/admin/` to import ChatGPT Markdown or plain text, normalize it into the Beacon schema, review exact public previews, manage editorial states, and publish directly to GitHub. See [PUBLISHING-PLATFORM.md](PUBLISHING-PLATFORM.md) for the complete workflow. The earlier ZIP/GitHub Desktop fallback remains documented in [PUBLISHING.md](PUBLISHING.md).
-
-## Hosting
-
-No build, server, or database is required. GitHub Pages serves the committed files directly at `https://jburris04.github.io/The-Beacon/`.
+Read [CHATGPT_PUBLISHING_HANDOFF.md](CHATGPT_PUBLISHING_HANDOFF.md) for the exact publishing contract and [PUBLISHING-PLATFORM.md](PUBLISHING-PLATFORM.md) for the human workflow.
