@@ -29,7 +29,8 @@
         "sources":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["title","url"],"properties":{"title":{"type":"string","minLength":1},"url":{"type":"string","format":"uri","pattern":"^https://"}}}},
         "pull_quote":{"type":"string"},
         "bottom_line":{"type":"string","minLength":1},
-        "why_it_matters":{"type":"object","additionalProperties":false,"required":["providers","patients"],"properties":{"providers":{"type":"string"},"patients":{"type":"string"}}},
+        "why_it_matters":{"type":"object","additionalProperties":false,"required":["providers","patients"],"properties":{"general":{"type":"string"},"providers":{"type":"string"},"patients":{"type":"string"}}},
+        "chain_reaction":{"type":"string"},
         "image":{"type":"object","additionalProperties":false,"required":["src","caption","credit","alt"],"properties":{"src":{"type":"string"},"caption":{"type":"string"},"credit":{"type":"string"},"alt":{"type":"string","minLength":1}}}
       }}
     },
