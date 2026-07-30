@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#132c42">
+<title>The Beacon Reader</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="description" content="The Beacon — news worth knowing, explained through themes.">
+</head>
+<body>
+<div class="print-cover" aria-hidden="true">
+  <div class="cover-top"><span>THE BEACON</span><span id="cover-date"></span></div>
+  <div class="cover-rule"></div>
+  <div class="cover-kicker">Edition <span id="cover-edition"></span></div>
+  <h1 id="cover-theme"></h1>
+  <p id="cover-deck"></p>
+  <div class="cover-bottom"><span>Ideas for a world in motion</span><span>beacon.reader</span></div>
+</div>
+<header class="reader-bar">
+  <div class="reader-inner">
+    <a class="brand-wrap" href="#top" aria-label="The Beacon home">
+      <div class="mark">B</div>
+      <div><div class="brand">THE BEACON</div><div class="subbrand">Reader</div></div>
+    </a>
+    <nav class="reader-actions" aria-label="Edition navigation">
+      <a href="#feature">Feature</a><a href="#healthcare">Healthcare</a><a href="#radar">Radar</a>
+      <button id="theme-toggle" type="button">Dark</button><button id="print-button" type="button">Print</button>
+    </nav>
+  </div>
+  <div class="progress-track"><div id="progress" class="progress"></div></div>
+</header>
+<main id="top">
+  <div class="meta"><div><strong id="edition-date"></strong><br><span id="edition-number"></span></div><div id="reading-time"></div></div>
+  <section class="editorial" id="note"><div class="kicker">From the Editorial Desk</div><h1>Good morning.</h1><p id="editorial-note"></p></section>
+  <section class="theme"><div class="kicker">Today’s Theme</div><h2 id="theme-title"></h2><p id="theme-summary"></p></section>
+  <section class="five"><div class="kicker">Orientation</div><h2>Five Things to Understand Today</h2><ol id="five-list"></ol></section>
+  <section id="feature" class="major-story"><div class="kicker">Feature</div><h2 class="feature-title" id="feature-headline"></h2><p class="deck" id="feature-deck"></p><div class="article" id="feature-body"></div><div class="trust-panel"><strong>Reporting at a glance</strong><span>Edition source: structured JSON</span><span>Corrections: none</span><span>Last updated: publication time</span></div></section>
+  <div id="stories"></div>
+  <section id="radar"><div class="radar"><div class="kicker">Already on Our Radar</div><h2 class="section-title">What We’re Reporting Next</h2><p id="radar-intro"></p><div class="radar-grid"><div><h3>Potential Features</h3><ul id="radar-features"></ul></div><div><h3>Events We’re Watching</h3><ul id="radar-events"></ul></div></div><div class="bottom"><strong>The Bottom Line</strong><span>We will separate the signal from the noise and publish only what proves genuinely worth your time.</span></div></div></section>
+</main>
+<footer class="footer"><div class="footer-inner"><div>Thank you for spending part of your morning with us.</div><small>The Beacon Reader v2</small></div></footer>
+<script src="app.js"></script>
+</body>
+</html>
