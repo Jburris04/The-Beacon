@@ -1,19 +1,26 @@
-# The Beacon Website
+# The Beacon / Beacon Studio v1
 
-GitHub Pages-ready static publication website.
+A premium, serverless digital newspaper built for GitHub Pages with plain HTML, CSS, and JavaScript.
 
-## Publish
-1. Delete the old website files from the repository (the old ZIP may remain, but it is cleaner to remove it).
-2. Upload the **contents** of this folder to the repository root.
-3. Commit to `main`.
-4. GitHub Pages redeploys automatically.
+## Live routes
 
-## Main routes
-- `/` — publication homepage
-- `/edition/002/` — complete current edition
-- `/article/<slug>/` — individual article pages
+- `/` — current edition homepage
+- `/edition/002/` — complete example edition
+- `/article/<slug>/` — individual stories
 - `/archive/` — edition archive
-- `/about/` — mission
-- `/subscribe/` — newsletter signup prototype
+- `/about/` and `/subscribe/` — publication pages
+- `/admin/` — Beacon Studio
 
-All links are relative, so the website works at `https://jburris04.github.io/The-Beacon/`.
+The public site reads structured content from `content/editions/`. `index.json` is the newest-first edition index, and each `edition-NNN.json` follows `schema.json`.
+
+## Local preview
+
+Serve the directory through any static web server. To reproduce the GitHub Pages subdirectory locally, serve the parent folder and open `/The-Beacon/`.
+
+## Creating and publishing editions
+
+Open `/admin/` to edit an edition, save browser-local drafts, preview changes, export JSON, or generate a complete publish package. See [PUBLISHING.md](PUBLISHING.md) for the GitHub Desktop workflow.
+
+## Hosting
+
+No build, server, or database is required. GitHub Pages serves the committed files directly at `https://jburris04.github.io/The-Beacon/`.
