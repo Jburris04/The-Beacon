@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs/promises';import vm from 'node:vm';
+const source=await fs.readFile(new URL('./fixtures/beacon-edition-003.md',import.meta.url),'utf8'),script=await fs.readFile(new URL('../admin/parser.js',import.meta.url),'utf8'),window={};vm.runInNewContext(script,{window,Date});
+test('cached Studio parser bridge defines BeaconParser',()=>assert.equal(typeof window.BeaconParser?.parse,'function'));
+test('cached Studio parser bridge imports the fixture into legacy field names',()=>{const d=window.BeaconParser.parse(source).edition;assert.equal(d.edition,'003');assert.equal(d.theme,'The Price of Doubt');assert.equal(d.stories.length,8);assert.equal(d.stories.filter(s=>s.bottom_line).length,8);assert.equal(d.stories.filter(s=>s.provider_impact).length,2);assert.equal(d.stories.filter(s=>s.patient_impact).length,2);assert.equal(d.radar.length,6)});
