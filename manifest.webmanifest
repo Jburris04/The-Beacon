@@ -1,1 +1,8 @@
-{"name":"The Beacon Reader","short_name":"The Beacon","start_url":"./","display":"standalone","background_color":"#f3efe5","theme_color":"#17324d","description":"News worth knowing."}
+{
+  "name": "The Beacon",
+  "short_name": "Beacon",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#102d42"
+}

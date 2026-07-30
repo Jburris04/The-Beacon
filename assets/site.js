@@ -1,0 +1,1 @@
+const menu=document.querySelector('.menu-button');const nav=document.querySelector('.site-nav');if(menu&&nav){menu.addEventListener('click',()=>nav.classList.toggle('open'));}document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav)nav.classList.remove('open')});
